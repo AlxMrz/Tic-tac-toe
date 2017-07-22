@@ -1,0 +1,29 @@
+#knui{
+    width:100%;height: 100%;
+
+}
+
+#knui button{
+    width:163px;
+    border:0px;
+    height:50px;
+    background-color: #5dd86e;
+    text-align: center;
+}
+#knui li {
+    display:inline;
+}
+#knui ul{
+    width:100%;
+}
+#gameblock{
+    width:100px;
+}
+
+#gameui{
+    width:200px;
+}
+#gameui > ul > li > input {
+  width:50px;
+  height:50px;
+}
