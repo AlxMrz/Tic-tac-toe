@@ -383,3 +383,6 @@ function checkCell(obj) {
         return false;
     return true;
 }
+function TestFunction() {
+    return 5;
+}
