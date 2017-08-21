@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tic-tac-toe</title>
-  <meta charset="utf-8" />
-  <link href="experiments.css" rel="stylesheet" type="text/css" />
-  <script src="kn/kn.js"></script>
-</head>
+  <head>
+    <title>Tic-tac-toe</title>
+    <meta charset="utf-8" />
+    <link href="experiments.css" rel="stylesheet" type="text/css" />
+    <script src="src/kn.js"></script>
+  </head>
   <body>
     <div id="game">
-        <div id="knui">
-            <div id="level">
-                Уровень сложности:
-                <select name="lvl"  id="lvl">
-                    <option  name="easy" >Легко</option>
-                    <option name="normal" >Нормально</option>
-                    <option name="difficult" >Сложно</option>
-                </select>
-            </div><hr />
-            <div id="gameui">
-                <ul>
-                    <li><input type="button" onclick='mainProcess(this)' value=" " id="cell1" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell2" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell3" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell4" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell5" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell6" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell7" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell8" /></li>
-                    <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell9" /></li>
-                </ul>
-                <button onclick="location.reload();">Начать игру заново</button>
-            </div>
+      <div id="knui">
+        <div id="level">
+          Уровень сложности:
+          <select name="lvl"  id="lvl">
+            <option  name="easy" >Легко</option>
+            <option name="normal" >Нормально</option>
+            <option name="difficfult" >Сложно</option>
+          </select>
+        </div><hr />
+        <div id="gameui">
+          <ul>
+            <li><input type="button" onclick='mainProcess(this)' value=" " id="cell1" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell2" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell3" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell4" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell5" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell6" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell7" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell8" /></li>
+            <li><input type="submit" onclick='mainProcess(this)' value=" " id="cell9" /></li>
+          </ul>
+          <button onclick="location.reload();">Начать игру заново</button>
         </div>
+      </div>
 
     </div>
 

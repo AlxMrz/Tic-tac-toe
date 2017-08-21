@@ -3,15 +3,15 @@
  * @type {number}
  */
 var Cell1 = 0,
-    Cell2 = 0,
-    Cell3 = 0,
-    Cell4 = 0,
-    Cell5 = 0,
-    Cell6 = 0,
-    Cell7 = 0,
-    Cell8 = 0,
-    Cell9 = 0,
-    gameover = false;
+        Cell2 = 0,
+        Cell3 = 0,
+        Cell4 = 0,
+        Cell5 = 0,
+        Cell6 = 0,
+        Cell7 = 0,
+        Cell8 = 0,
+        Cell9 = 0,
+        gameover = false;
 /**
  *Начальный игрок
  * @type {string}
@@ -30,7 +30,6 @@ function inLog() {
     console.log("cell7: " + Cell7);
     console.log("cell8: " + Cell8);
     console.log("cell9: " + Cell9);
-
 }
 /**
  * Основной процесс в этой функции. Меняем значение ячейки
@@ -41,7 +40,7 @@ function mainProcess(obj) {
     if (checkCell(obj)) {
         changeVal(obj);
     } else {
-        return;
+        return false;
     }
     isGameOver();
     changePlayer();
@@ -49,27 +48,19 @@ function mainProcess(obj) {
         AI();
         isGameOver();
     }
-
     changePlayer();
 }
 /**
- * Проверяет, занял ли игрок 3 клетки подряд.
- * @return void
+ * Проверяет, свободна ли ячейка
+ * @param obj Текущая ячейка
+ * @returns {boolean}
  */
-function isGameOver() {
-    var check = checkIfWin();
-    if (check === true && check !== 'ничья') {
-        alert("Выйграл игрок: " + player);
-        location.reload();
-        gameover = true;
-    } else if (check === 'ничья') {
-        alert("Да тут Ничья");
-
-        location.reload();
-        gameover = true;
-    }
-
+function checkCell(obj) {
+    if (obj.value !== " ")
+        return false;
+    return true;
 }
+
 /**
  * Меняет значение ячейки в системе
  * @param obj Текущая ячейка
@@ -78,6 +69,36 @@ function changeVal(obj) {
     obj.value = player;
     changeCell(obj.id);
 }
+/**
+ * Проверяет, занял ли игрок 3 клетки подряд.
+ * @return void
+ */
+function isGameOver() {
+    var check = checkIfWin();
+    if (check === true) {
+        alert("Выйграл игрок: " + player);
+        location.reload();
+        gameover = true;
+    } else if (check === 'ничья') {
+        alert("Да тут Ничья");
+        location.reload();
+        gameover = true;
+    }
+
+}
+
+/**
+ * Меняет игрока
+ * return void
+ */
+function changePlayer() {
+    if (player === "X") {
+        player = "O";
+    } else if (player === "O") {
+        player = "X";
+    }
+}
+
 /**
  * Меняет значение ячейки на экране
  * @param cell
@@ -113,20 +134,7 @@ function changeCell(cell) {
             break;
     }
 }
-/**
- * Меняет игрока
- * return void
- */
-function changePlayer() {
-    if (player === "X") {
-        player = "O";
 
-    } else if (player === "O") {
-        player = "X";
-
-    }
-
-}
 /**
  * Проверяет игру на завершенность шагов.
  * @returns mixed Возвращает true в случае окончания свободных шагов и есть победитель
@@ -134,24 +142,54 @@ function changePlayer() {
  * Возвращает "ничья", если шагов свободных нет и победителя тоже
  */
 function checkIfWin() {
-    if ((Cell1 === Cell2 && Cell2 === Cell3 && (Cell3 === player)) ||
-        (Cell4 === Cell5 && Cell5 === Cell6 && (Cell6 === player)) ||
-        (Cell7 === Cell8 && Cell8 === Cell9 && (Cell9 === player)) ||
-        (Cell1 === Cell4 && Cell4 === Cell7 && (Cell7 === player)) ||
-        (Cell2 === Cell5 && Cell5 === Cell8 && (Cell8 === player)) ||
-        (Cell3 === Cell6 && Cell6 === Cell9 && (Cell9 === player)) ||
-        (Cell1 === Cell5 && Cell5 === Cell9 && (Cell9 === player)) ||
-        (Cell3 === Cell5 && Cell5 === Cell7 && (Cell7 === player))) {
-
+    if (areThreeCellsInARowCompleted()) {
         return true;
+    } else if (areThereAnyFreeCells()) {
+        return false;
     }
-    if (Cell1 !== 0 && Cell2 !== 0 && Cell3 !== 0 &&
-        Cell4 !== 0 && Cell5 !== 0 && Cell6 !== 0 &&
-        Cell7 !== 0 && Cell8 !== 0 && Cell9 !== 0) {
-        var game = 'ничья';
-        return game;
-    }
-    return false;
+    return 'ничья';
+}
+function areThreeCellsInARowCompleted() {
+    return is123Equivalent() ||
+            is456Equivalent() ||
+            is789Equivalent() ||
+            is147Equivalent() ||
+            is258Equivalent() ||
+            is369Equivalent() ||
+            is159Equivalent() ||
+            is357Equivalent();
+}
+function is123Equivalent() {
+    return (Cell1 === Cell2 && Cell2 === Cell3 && (Cell3 === player));
+}
+function is456Equivalent() {
+    return (Cell4 === Cell5 && Cell5 === Cell6 && (Cell6 === player));
+}
+function is789Equivalent() {
+    return (Cell2 === Cell5 && Cell5 === Cell8 && (Cell8 === player));
+}
+
+function is147Equivalent() {
+    return (Cell1 === Cell4 && Cell4 === Cell7 && (Cell7 === player));
+}
+function is258Equivalent() {
+    return (Cell2 === Cell5 && Cell5 === Cell8 && (Cell8 === player));
+}
+function is369Equivalent() {
+    return (Cell3 === Cell6 && Cell6 === Cell9 && (Cell9 === player));
+}
+
+function is159Equivalent() {
+    return (Cell1 === Cell5 && Cell5 === Cell9 && (Cell9 === player));
+}
+function is357Equivalent() {
+    return (Cell3 === Cell5 && Cell5 === Cell7 && (Cell7 === player));
+}
+
+function areThereAnyFreeCells() {
+    return (Cell1 == 0 || Cell2 == 0 || Cell3 == 0 ||
+            Cell4 == 0 || Cell5 == 0 || Cell6 == 0 ||
+            Cell7 == 0 || Cell8 == 0 || Cell9 == 0);
 }
 /**
  * Имитация Искуственного интеллекта
@@ -165,7 +203,6 @@ function AI() {
     if (diflvl === "Нормально") {
 
         var aiWay = AI_Way();
-
         if (aiWay === false) {
             aiWay = AI_Random();
         }
@@ -175,7 +212,6 @@ function AI() {
     if (diflvl === "Сложно") {
         if (Cell5 === "X") {
             var aiWay = AI_Way();
-
             if (aiWay === false) {
                 if (Cell1 === 0) {
                     aiWay = 1
@@ -203,7 +239,6 @@ function AI() {
         }
         if (Cell5 === "O") {
             var aiWay = AI_Way();
-
             if (aiWay === false) {
                 if (Cell1 === "X" && Cell3 === 0) {
                     aiWay = 3;
@@ -250,7 +285,6 @@ function AI() {
             obj.value = player;
             Cell2 = player;
             break;
-
         case 3:
             obj.value = player;
             Cell3 = player;
@@ -362,7 +396,7 @@ function AI_Way() {
  * @returns {number}
  */
 function AI_Random() {
-    for (var x = true; x === true;) {
+    for (var x = true; x === true; ) {
         var aiWay = Math.floor((Math.random() * 9) + 1);
         var obj = document.getElementById("cell" + aiWay);
         if (checkCell(obj) === false) {
@@ -372,17 +406,4 @@ function AI_Random() {
         }
     }
     return aiWay;
-}
-/**
- * Проверяет, свободна ли ячейка
- * @param obj Текущая ячейка
- * @returns {boolean}
- */
-function checkCell(obj) {
-    if (obj.value !== " ")
-        return false;
-    return true;
-}
-function TestFunction() {
-    return 5;
 }
