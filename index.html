@@ -4,7 +4,7 @@
     <title>Tic-tac-toe</title>
     <meta charset="utf-8" />
     <link href="experiments.css" rel="stylesheet" type="text/css" />
-    <script src="src/kn.js"></script>
+
   </head>
   <body>
     <div id="game">
@@ -19,21 +19,24 @@
         </div><hr />
         <div id="gameui">
           <ul>
-            <li><input type="button" onclick='game.mainProcess(this)' value=" " id="cell1" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell2" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell3" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell4" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell5" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell6" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell7" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell8" /></li>
-            <li><input type="submit" onclick='game.mainProcess(this)' value=" " id="cell9" /></li>
+            <li><input type="button" class="cell"  value=" " id="cell1" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell2" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell3" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell4" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell5" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell6" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell7" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell8" /></li>
+            <li><input type="submit" class="cell"  value=" " id="cell9" /></li>
           </ul>
           <button onclick="location.reload();">Начать игру заново</button>
         </div>
       </div>
 
     </div>
-
+    <script src="src/GameOverWatcher.js"></script>
+    <script src="src/Logger.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/App.js"></script>
   </body>
 </html>
