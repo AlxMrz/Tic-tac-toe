@@ -1,16 +1,17 @@
 class App {
     constructor() {
         this.game = new Game();
-        console.log(game);
-        this.cells = document.getElementsByClassName('cell');
-        console.log(this.cells);
-        for (var i=0;i<this.cells.length-1;i++) {
-            console.log(this.cells[i]);
-            this.cells[i].onclick = function () {
+        this.cells = document.getElementsByClassName( 'cell' );
+        console.log( this );
+    }
+    run() {
+        for (var i = 0; i < this.cells.length - 1; i++) {
+            this.cells[ i ].onclick = function () {
+                console.log(this);
                 this.game.mainProcess();
-            }
+            }.bind(this);
         }
     }
 }
 
-new App();
+(new App()).run();
