@@ -1,8 +1,12 @@
-class NormalStrategy {
+class NormalStrategy extends DifficultStrategy {
+  constructor( game ) {
+    super( game );
+    this.easyStrategy = new EasyStrategy( game );
+  }
   makeWay() {
     var aiWay = this.AI_Way();
     if ( aiWay === false ) {
-      aiWay = AI_Random();
+      aiWay = this.easyStrategy.AI_Random();
     }
     return aiWay;
   }
@@ -11,72 +15,71 @@ class NormalStrategy {
    * @returns {*}
    */
   AI_Way() {
+    var aiWay = false;
 // Первая горизонтальная строка
-    if ( Cell1 === Cell2 && Cell2 !== 0 && Cell3 === 0 ) {
-      return aiWay = 3;
-    } else if ( Cell1 === Cell3 && Cell3 !== 0 && Cell2 === 0 ) {
-      return aiWay = 2;
-    } else if ( Cell2 === Cell3 && Cell3 !== 0 && Cell1 === 0 ) {
-      return aiWay = 1;
+    if ( this.game.Cell1 === this.game.Cell2 && this.game.Cell2 !== 0 && this.game.Cell3 === 0 ) {
+       aiWay = 3;
+    } else if ( this.game.Cell1 === this.game.Cell3 && this.game.Cell3 !== 0 && this.game.Cell2 === 0 ) {
+       aiWay = 2;
+    } else if ( this.game.Cell2 === this.game.Cell3 && this.game.Cell3 !== 0 && this.game.Cell1 === 0 ) {
+       aiWay = 1;
     }
 // Вторая горизонтальная строка
-    else if ( Cell4 === Cell5 && Cell5 !== 0 && Cell6 === 0 ) {
-      return aiWay = 6;
-    } else if ( Cell5 === Cell6 && Cell6 !== 0 && Cell4 === 0 ) {
-      return aiWay = 4;
-    } else if ( Cell4 === Cell6 && Cell6 !== 0 && Cell5 === 0 ) {
-      return aiWay = 5;
+    else if ( this.game.Cell4 === this.game.Cell5 && this.game.Cell5 !== 0 && this.game.Cell6 === 0 ) {
+       aiWay = 6;
+    } else if ( this.game.Cell5 === this.game.Cell6 && this.game.Cell6 !== 0 && this.game.Cell4 === 0 ) {
+       aiWay = 4;
+    } else if ( this.game.Cell4 === this.game.Cell6 && this.game.Cell6 !== 0 && this.game.Cell5 === 0 ) {
+      aiWay = 5;
     }
 //Третья горизонтальная строка
-    else if ( Cell7 === Cell8 && Cell8 !== 0 && Cell9 === 0 ) {
-      return aiWay = 9;
-    } else if ( Cell7 === Cell9 && Cell9 !== 0 && Cell8 === 0 ) {
-      return aiWay = 8;
-    } else if ( Cell8 === Cell9 && Cell9 !== 0 && Cell7 === 0 ) {
-      return aiWay = 7;
+    else if ( this.game.Cell7 === this.game.Cell8 && this.game.Cell8 !== 0 && this.game.Cell9 === 0 ) {
+      aiWay = 9;
+    } else if ( this.game.Cell7 === this.game.Cell9 && this.game.Cell9 !== 0 && this.game.Cell8 === 0 ) {
+      aiWay = 8;
+    } else if ( this.game.Cell8 === this.game.Cell9 && this.game.Cell9 !== 0 && this.game.Cell7 === 0 ) {
+      aiWay = 7;
     }
 //Первая вертикальная строка
-    else if ( Cell1 === Cell4 && Cell4 !== 0 && Cell7 === 0 ) {
-      return aiWay = 7;
-    } else if ( Cell1 === Cell7 && Cell7 !== 0 && Cell4 === 0 ) {
-      return aiWay = 4;
-    } else if ( Cell4 === Cell7 && Cell7 !== 0 && Cell1 === 0 ) {
-      return aiWay = 1;
+    else if ( this.game.Cell1 === this.game.Cell4 && this.game.Cell4 !== 0 && this.game.Cell7 === 0 ) {
+      aiWay = 7;
+    } else if ( this.game.Cell1 === this.game.Cell7 && this.game.Cell7 !== 0 && this.game.Cell4 === 0 ) {
+      aiWay = 4;
+    } else if ( this.game.Cell4 === this.game.Cell7 && this.game.Cell7 !== 0 && this.game.Cell1 === 0 ) {
+      aiWay = 1;
     }
 //Вторая вертикальная строка
-    else if ( Cell2 === Cell5 && Cell5 !== 0 && Cell8 === 0 ) {
-      return aiWay = 8;
-    } else if ( Cell2 === Cell8 && Cell8 !== 0 && Cell5 === 0 ) {
-      return aiWay = 5;
-    } else if ( Cell5 === Cell8 && Cell8 !== 0 && Cell2 === 0 ) {
-      return aiWay = 2;
+    else if ( this.game.Cell2 === this.game.Cell5 && this.game.Cell5 !== 0 && this.game.Cell8 === 0 ) {
+      aiWay = 8;
+    } else if ( this.game.Cell2 === this.game.Cell8 && this.game.Cell8 !== 0 && this.game.Cell5 === 0 ) {
+      aiWay = 5;
+    } else if ( this.game.Cell5 === this.game.Cell8 && this.game.Cell8 !== 0 && this.game.Cell2 === 0 ) {
+      aiWay = 2;
     }
 //Третья вертикальная строка
-    else if ( Cell3 === Cell6 && Cell6 !== 0 && Cell9 === 0 ) {
-      return aiWay = 9;
-    } else if ( Cell3 === Cell9 && Cell9 !== 0 && Cell6 === 0 ) {
-      return aiWay = 6;
-    } else if ( Cell6 === Cell9 && Cell9 !== 0 && Cell3 === 0 ) {
-      return aiWay = 3;
+    else if ( this.game.Cell3 === this.game.Cell6 && this.game.Cell6 !== 0 && this.game.Cell9 === 0 ) {
+      aiWay = 9;
+    } else if ( this.game.Cell3 === this.game.Cell9 && this.game.Cell9 !== 0 && this.game.Cell6 === 0 ) {
+      aiWay = 6;
+    } else if ( this.game.Cell6 === this.game.Cell9 && this.game.Cell9 !== 0 && this.game.Cell3 === 0 ) {
+      aiWay = 3;
     }
 //Первая наклонная строка
-    else if ( Cell1 === Cell5 && Cell5 !== 0 && Cell9 === 0 ) {
-      return aiWay = 9;
-    } else if ( Cell1 === Cell9 && Cell9 !== 0 && Cell5 === 0 ) {
-      return aiWay = 5;
-    } else if ( Cell5 === Cell9 && Cell9 !== 0 && Cell1 === 0 ) {
-      return aiWay = 1;
+    else if ( this.game.Cell1 === this.game.Cell5 && this.game.Cell5 !== 0 && this.game.Cell9 === 0 ) {
+      aiWay = 9;
+    } else if ( this.game.Cell1 === this.game.Cell9 && this.game.Cell9 !== 0 && this.game.Cell5 === 0 ) {
+      aiWay = 5;
+    } else if ( this.game.Cell5 === this.game.Cell9 && this.game.Cell9 !== 0 && this.game.Cell1 === 0 ) {
+      aiWay = 1;
     }
 //Вторая наклонная строка
-    else if ( Cell3 === Cell5 && Cell5 !== 0 && Cell7 === 0 ) {
-      return aiWay = 7;
-    } else if ( Cell3 === Cell7 && Cell7 !== 0 && Cell5 === 0 ) {
-      return aiWay = 5;
-    } else if ( Cell5 === Cell7 && Cell7 !== 0 && Cell3 === 0 ) {
-      return aiWay = 3;
-    } else {
-      return false;
+    else if ( this.game.Cell3 === this.game.Cell5 && this.game.Cell5 !== 0 && this.game.Cell7 === 0 ) {
+      aiWay = 7;
+    } else if ( this.game.Cell3 === this.game.Cell7 && this.game.Cell7 !== 0 && this.game.Cell5 === 0 ) {
+      aiWay = 5;
+    } else if ( this.game.Cell5 === this.game.Cell7 && this.game.Cell7 !== 0 && this.game.Cell3 === 0 ) {
+      aiWay = 3;
     }
-    ;
+    return aiWay;
   }
 }

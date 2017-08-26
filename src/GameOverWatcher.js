@@ -1,7 +1,6 @@
 class GameOverWatcher {
 
   constructor( game ) {
-    console.log(game);
     if ( game instanceof Game ) {
       this.game = game;
     } else {
@@ -15,16 +14,17 @@ class GameOverWatcher {
    */
   reloadPageIfGameIsOverAndSetGameOverInTrue() {
     var check = this.checkIfWin();
+    console.log(this.game.getPlayer() + ' ' + check);
     if ( check === true ) {
-      showMessageAndReloadPage( "Выйграл игрок: " + player );
+      this.showMessageAndReloadPage( "Выйграл игрок: " + this.game.getPlayer());
     } else if ( check === 'ничья' ) {
-      showMessageAndReloadPage( "Да тут Ничья" );
+      this.showMessageAndReloadPage( "Да тут Ничья" );
     }
   }
   showMessageAndReloadPage( message ) {
     alert( message );
     location.reload();
-    gameover = true;
+    this.game.gameover = true;
   }
   /**
    * Проверяет игру на завершенность шагов.
@@ -41,6 +41,10 @@ class GameOverWatcher {
     return 'ничья';
   }
   areThreeCellsInARowCompleted() {
+    console.log(this.is369Equivalent());
+    console.log(this.game.getCell('Cell3'));
+    console.log(this.game.getCell('Cell6'));
+    console.log(this.game.getCell('Cell9'));
     return this.is123Equivalent() ||
             this.is456Equivalent() ||
             this.is789Equivalent() ||

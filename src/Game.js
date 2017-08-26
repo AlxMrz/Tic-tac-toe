@@ -2,168 +2,169 @@
  * Основной класс приложения. Вызывает метод mainProcess() при нажатии на кнопку.
  * TODO: переписать класс в терминах Class es6
  */
-function Game()
+class Game
 {
-  var self = this;
-  /**
-   * Значения свободных ячеек
-   * @type {number}
-   */
-  var Cell1 = 0;
-  var Cell2 = 0;
-  var Cell3 = 0;
-  var Cell4 = 0;
-  var Cell5 = 0;
-  var Cell6 = 0;
-  var Cell7 = 0;
-  var Cell8 = 0;
-  var Cell9 = 0;
-  var gameOverWatcher = new GameOverWatcher( this );
-  var logger = new Logger();
-  var diflvl = document.getElementById( 'lvl' ) ? document.getElementById( 'lvl' ).value : 'Легко';
-  //var AI = new ArtificialIntelligent( this );
-  var gameover = false;
-  /**
-   *Начальный игрок
-   * @type {string}
-   */
-  var player = "X";
+  constructor() {
+    this.self = this;
+    this.Cell1 = 0;
+    this.Cell2 = 0;
+    this.Cell3 = 0;
+    this.Cell4 = 0;
+    this.Cell5 = 0;
+    this.Cell6 = 0;
+    this.Cell7 = 0;
+    this.Cell8 = 0;
+    this.Cell9 = 0;
+    this.gameOverWatcher = new GameOverWatcher( this );
+    this.logger = new Logger();
+    this.diflvl = document.getElementById( 'lvl' ) ? document.getElementById( 'lvl' ).value : 'Легко';
+    this.AI;
+    this.gameover = false;
+    this.player = "X";
+  }
 
   /**
    * Основной процесс в этой функции. Меняем значение ячейки
    * проверяем результат, выйграл ли игрок.
    * @param obj Текущая ячейка
    */
-  this.mainProcess = function ( obj ) {
-    if ( checkCell( obj ) ) {
-      changeVal( obj );
+  mainProcess( obj ) {
+    if ( this.checkCell( obj ) ) {
+      this.changeVal( obj );
     } else {
       return false;
     }
-    gameOverWatcher.reloadPageIfGameIsOverAndSetGameOverInTrue();
-    changePlayer();
-    if ( gameover === false ) {
-     // AI.makeWayByAI();
-      gameOverWatcher.reloadPageIfGameIsOverAndSetGameOverInTrue();
+    this.gameOverWatcher.reloadPageIfGameIsOverAndSetGameOverInTrue();
+    this.changePlayer();
+    if ( this.gameover === false ) {
+      this.AI.makeWayByAI();
+      this.gameOverWatcher.reloadPageIfGameIsOverAndSetGameOverInTrue();
     }
-    changePlayer();
+    this.changePlayer();
     return true;
-  };
+  }
   /**
    * Проверяет, свободна ли ячейка
    * @param obj Текущая ячейка
    * @returns {boolean}
    */
-  checkCell = function ( obj ) {
-    if ( obj == null )
+  checkCell( obj ) {
+    if ( obj === null )
       return 'none';
     if ( obj.value !== " " )
       return false;
     return true;
-  };
+  }
 
   /**
    * Меняет значение ячейки в системе
    * @param obj Текущая ячейка
    */
-  changeVal = function ( obj ) {
+  changeVal( obj ) {
     if ( obj == null ) {
       return false;
     }
 
-    obj.value = player;
+    obj.value = this.player;
     this.changeCell( obj.id );
     return true;
-  };
+  }
 
   /**
    * Меняет игрока
    * return void
    */
-  changePlayer = function () {
-    if ( player === "X" ) {
-      player = "O";
-    } else if ( player === "O" ) {
-      player = "X";
+  changePlayer() {
+    if ( this.player === "X" ) {
+      this.player = "O";
+    } else if ( this.player === "O" ) {
+      this.player = "X";
     }
-  };
+  }
 
   /**
    * Меняет значение ячейки на экране
    * @param cell
    */
-  changeCell = function ( cell ) {
+  changeCell( cell ) {
     switch ( cell ) {
       case "cell1":
-        this.Cell1 = player;
+        this.Cell1 = this.player;
         break;
       case "cell2":
-        this.Cell2 = player;
+        this.Cell2 = this.player;
         break;
       case "cell3":
-        this.Cell3 = player;
+        this.Cell3 = this.player;
         break;
       case "cell4":
-        this.Cell4 = player;
+        this.Cell4 = this.player;
         break;
       case "cell5":
-        this.Cell5 = player;
+        this.Cell5 = this.player;
         break;
       case "cell6":
-        this.Cell6 = player;
+        this.Cell6 = this.player;
         break;
       case "cell7":
-        this.Cell7 = player;
+        this.Cell7 = this.player;
         break;
       case "cell8":
-        this.Cell8 = player;
+        this.Cell8 = this.player;
         break;
       case "cell9":
-        this.Cell9 = player;
+        this.Cell9 = this.player;
         break;
     }
-  };
+  }
 
-  this.setBackGround = function ( cellsValue, playerValue = 'X' ) {
-    Cell1 = cellsValue.Cell1;
-    Cell2 = cellsValue.Cell2;
-    Cell3 = cellsValue.Cell3;
-    Cell4 = cellsValue.Cell4;
-    Cell5 = cellsValue.Cell5;
-    Cell6 = cellsValue.Cell6;
-    Cell7 = cellsValue.Cell7;
-    Cell8 = cellsValue.Cell8;
-    Cell9 = cellsValue.Cell9;
-    player = playerValue;
-  };
-  this.getCell = function ( cellName ) {
+  setBackGround( cellsValue, playerValue = 'X' ) {
+    this.Cell1 = cellsValue.Cell1;
+    this.Cell2 = cellsValue.Cell2;
+    this.Cell3 = cellsValue.Cell3;
+    this.Cell4 = cellsValue.Cell4;
+    this.Cell5 = cellsValue.Cell5;
+    this.Cell6 = cellsValue.Cell6;
+    this.Cell7 = cellsValue.Cell7;
+    this.Cell8 = cellsValue.Cell8;
+    this.Cell9 = cellsValue.Cell9;
+    console.log( cellsValue );
+    console.log( this.Cell6 );
+    this.player = playerValue;
+  }
+  getCell( cellName ) {
     switch ( cellName ) {
-      case 'Cell1' :
-        return Cell1;
+      case 'Cell1':
+        return this.Cell1;
       case 'Cell2' :
-        return Cell2;
+        return this.Cell2;
       case 'Cell3' :
-        return Cell3;
+        return this.Cell3;
       case 'Cell4' :
-        return Cell4;
+        return this.Cell4;
       case 'Cell5' :
-        return Cell5;
+        return this.Cell5;
       case 'Cell6' :
-        return Cell6;
+        return this.Cell6;
       case 'Cell7' :
-        return Cell7;
+        return this.Cell7;
       case 'Cell8' :
-        return Cell8;
+        return this.Cell8;
+      case 'Cell9' :
+        return this.Cell9;
     }
     ;
-  };
-  this.getPlayer = function () {
-    return player;
-  };
-  this.getDifLvl = function () {
-    return diflvl;
-  };
-  this.setGameOver = function ( set ) {
-    gameover = set;
-  };
+  }
+  getPlayer() {
+    return this.player;
+  }
+  getDifLvl() {
+    return this.diflvl;
+  }
+  setGameOver( set ) {
+    this.gameover = set;
+  }
+  setAI( ai ) {
+    this.AI = ai;
+  }
 }
