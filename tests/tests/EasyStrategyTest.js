@@ -1,3 +1,4 @@
+ 'use strict';
 QUnit.module( "Easy strategy Tests" );
 
 QUnit.test( "Easy strategy initialization", function ( assert ) {

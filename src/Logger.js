@@ -1,3 +1,4 @@
+ 'use strict';
 class Logger {
     /**
      * @return void Пишет в логи значение каждой ячейки в каждом шаге.

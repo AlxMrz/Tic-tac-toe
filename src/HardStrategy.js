@@ -1,3 +1,4 @@
+ 'use strict';
 class HardStrategy extends DifficultStrategy {
   constructor( game ) {
     super( game );

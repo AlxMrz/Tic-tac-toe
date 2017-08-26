@@ -1,3 +1,4 @@
+ 'use strict';
 QUnit.module( "Sinon Tests" );
 
 function TEST() {

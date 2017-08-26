@@ -1,3 +1,4 @@
+ 'use strict';
 class DifficultStrategy {
   constructor( game ) {
     this.game = game;

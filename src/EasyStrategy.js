@@ -1,3 +1,5 @@
+ 'use strict';
+
 class EasyStrategy extends DifficultStrategy {
   makeWay() {
     return this.AI_Random();

@@ -1,3 +1,4 @@
+ 'use strict';
 QUnit.module( "Game Tests" );
 var game = new Game();
 game.setAI( new ArtificialIntelligent( game ) );
