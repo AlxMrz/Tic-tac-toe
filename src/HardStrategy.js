@@ -35,15 +35,20 @@ class HardStrategy extends DifficultStrategy {
         }
       }
     }
-    console.log(aiWay);
     if ( this.game.Cell5 === 0 ) {
       var aiWay = 5;
     }
-    console.log(aiWay);
     if ( this.game.Cell5 === "O" ) {
-      console.log("I AM HERE");
       if ( aiWay === false ) {
-        if ( this.game.Cell1 === "X" && this.game.Cell3 === 0 ) {
+        if ( this.game.Cell1 === 'X' && this.game.Cell8 === 'X' && this.game.Cell7 === 0) {
+          aiWay = 7;
+        } else if ( this.game.Cell8 === 'X' && this.game.Cell2 === 'X' && this.game.Cell3 === 0) {
+          aiWay = 3;
+        } else if ( this.game.Cell2 === 'X' && this.game.Cell7 === 'X' && this.game.Cell1 === 0) {
+          aiWay = 1;
+        } else if ( this.game.Cell3 === 'X' && this.game.Cell8 === 'X' && this.game.Cell9 === 0) {
+          aiWay = 9;
+        }  else if ( this.game.Cell1 === "X" && this.game.Cell3 === 0 ) {
           aiWay = 3;
         } else if ( this.game.Cell3 === "X" && this.game.Cell1 === 0 ) {
           aiWay = 1;
@@ -78,7 +83,6 @@ class HardStrategy extends DifficultStrategy {
 
       }
     }
-    console.log('AIWAY BY HARD: ' + aiWay);
     return aiWay;
   }
 }

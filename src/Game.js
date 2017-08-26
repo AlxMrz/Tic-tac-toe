@@ -1,4 +1,4 @@
- 'use strict';
+'use strict';
 /**
  * Основной класс приложения. Вызывает метод mainProcess() при нажатии на кнопку.
  * TODO: переписать класс в терминах Class es6
@@ -27,14 +27,14 @@ class Game
   /**
    * Основной процесс в этой функции. Меняем значение ячейки
    * проверяем результат, выйграл ли игрок.
-   * @param obj Текущая ячейка
+   * @param cell Текущая ячейка
    */
-  mainProcess( obj ) {
-    if ( this.checkCell( obj ) ) {
-      this.changeVal( obj );
-    } else {
+  mainProcess( cell ) {
+    
+    if(!this.changeCellValueIfNotMarked( cell )) {
       return false;
     }
+    
     this.gameOverWatcher.reloadPageIfGameIsOverAndSetGameOverInTrue();
     this.changePlayer();
     if ( this.gameover === false ) {
@@ -44,12 +44,19 @@ class Game
     this.changePlayer();
     return true;
   }
+  changeCellValueIfNotMarked( cell ) {
+    if ( this.isCellMarked( cell ) ) {
+      this.changeVal( cell );
+      return true;
+    } 
+    return false;
+  }
   /**
    * Проверяет, свободна ли ячейка
    * @param obj Текущая ячейка
    * @returns {boolean}
    */
-  checkCell( obj ) {
+  isCellMarked( obj ) {
     if ( obj === null )
       return 'none';
     if ( obj.value !== " " )

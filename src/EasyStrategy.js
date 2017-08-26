@@ -13,7 +13,7 @@ class EasyStrategy extends DifficultStrategy {
     for ( var x = true; x === true; ) {
       var aiWay = Math.floor( ( Math.random() * 9 ) + 1 );
       this.setCellIfUndefined( aiWay );
-      if ( this.game.checkCell( this.cell ) === false ) {
+      if ( this.game.isCellMarked( this.cell ) === false ) {
         delete this.cell;
         continue;
       } else {
