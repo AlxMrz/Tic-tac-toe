@@ -33,7 +33,3 @@ QUnit.test( "Class Game returns diffcult lvl", function ( assert ) {
   assert.equal( diflvl, 'Легко', 'Difficulty level' );
 } );
 
-QUnit.test( "Value of a cell will be changed because of it's empty value", function ( assert ) {
-  var diflvl = game.getDifLvl();
-  assert.equal( diflvl, 'Легко', 'Difficulty level' );
-} );
