@@ -1,17 +1,17 @@
  'use strict';
 QUnit.module( "Normal strategy Tests" );
 
-
 var game = new Game();
 
-game.Cell1 = "X";
-game.Cell2 = "X";
-game.Cell3 = 0;
-game.Cell4 = 0;
-game.Cell5 = 0;
-game.Cell6 = 0;
-game.Cell7 = 0;
-game.Cell8 = 0;
+game.cellAgregator = new CellAgregator( game );
+game.cellAgregator.Cell1 = "X";
+game.cellAgregator.Cell2 = "X";
+game.cellAgregator.Cell3 = 0;
+game.cellAgregator.Cell4 = 0;
+game.cellAgregator.Cell5 = 0;
+game.cellAgregator.Cell6 = 0;
+game.cellAgregator.Cell7 = 0;
+game.cellAgregator.Cell8 = 0;
 
 var ns = new NormalStrategy( game );
 
@@ -21,13 +21,13 @@ QUnit.test( "Normal strategy initialization", function ( assert ) {
   assert.ok( ns instanceof NormalStrategy );
 } );
 QUnit.test( "Returns 3 whene 1 and 2 cells are marked", function ( assert ) {
-  console.log( ns.game );
-  assert.equal( ns.makeWay(), 3 );
+  console.dir(ns.game.cellAgregator);
+  assert.equal(3,ns.makeWay() );
 } );
 QUnit.test( "Returns 6 whene 4 and 5 cells are marked", function ( assert ) {
-  ns.game.Cell1 = 0;
-  ns.game.Cell2 = 0;
-  ns.game.Cell4 = "O";
-  ns.game.Cell5 = "O";
+  ns.game.cellAgregator.Cell1 = 0;
+  ns.game.cellAgregator.Cell2 = 0;
+  ns.game.cellAgregator.Cell4 = "O";
+  ns.game.cellAgregator.Cell5 = "O";
   assert.equal( ns.makeWay(), 6 );
 } );

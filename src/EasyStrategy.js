@@ -1,4 +1,4 @@
- 'use strict';
+'use strict';
 
 class EasyStrategy extends DifficultStrategy {
   makeWay() {
@@ -13,8 +13,8 @@ class EasyStrategy extends DifficultStrategy {
     for ( var x = true; x === true; ) {
       var aiWay = Math.floor( ( Math.random() * 9 ) + 1 );
       this.setCellIfUndefined( aiWay );
-      if ( this.game.isCellMarked( this.cell ) === false ) {
-        delete this.cell;
+      if ( this.game.cellAgregator.isCellNotMarked( this.cell ) === false ) {
+        this.cell = undefined;
         continue;
       } else {
         x = false;
@@ -23,8 +23,9 @@ class EasyStrategy extends DifficultStrategy {
     return aiWay;
   }
   setCellIfUndefined( aiWay ) {
-    if(this.cell === undefined) {
+    if ( this.cell == undefined ) {
       this.cell = document.getElementById( "cell" + aiWay );
     }
+
   }
 }

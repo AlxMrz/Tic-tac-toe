@@ -10,73 +10,72 @@ class HardStrategy extends DifficultStrategy {
   }
   AIHardWay() {
     var aiWay = this.normalStrategy.AI_Way();
-    console.log(aiWay);
-    if ( this.game.Cell5 === "X" ) {
+    var cellAgregator = this.game.cellAgregator;
+    if ( cellAgregator.Cell5 === "X" ) {
       if ( aiWay === false ) {
         if ( this.game.Cell1 === 0 ) {
           aiWay = 1;
-        } else if ( this.game.Cell3 === 0 ) {
+        } else if ( cellAgregator.Cell3 === 0 ) {
           aiWay = 3;
-        } else if ( this.game.Cell7 === 0 ) {
+        } else if ( cellAgregator.Cell7 === 0 ) {
           aiWay = 7;
-        } else if ( this.game.Cell9 === 0 ) {
+        } else if ( cellAgregator.Cell9 === 0 ) {
           aiWay = 9;
         } else {
-          console.log("IMPOSSIBLE");
-          if ( this.game.Cell2 === 0 ) {
+          if ( cellAgregator.Cell2 === 0 ) {
             aiWay = 2;
-          } else if ( this.game.Cell4 === 0 ) {
+          } else if ( cellAgregator.Cell4 === 0 ) {
             aiWay = 4;
-          } else if ( this.game.Cell6 === 0 ) {
+          } else if ( cellAgregator.Cell6 === 0 ) {
             aiWay = 6;
-          } else if ( this.game.Cell8 === 0 ) {
+          } else if ( cellAgregator.Cell8 === 0 ) {
             aiWay = 8;
           }
         }
       }
     }
-    if ( this.game.Cell5 === 0 ) {
+    if ( !aiWay && cellAgregator.Cell5 === 0 ) {
       var aiWay = 5;
     }
-    if ( this.game.Cell5 === "O" ) {
+    if ( !aiWay && cellAgregator.Cell5 === "O" ) {
       if ( aiWay === false ) {
-        if ( this.game.Cell1 === 'X' && this.game.Cell8 === 'X' && this.game.Cell7 === 0) {
+        if ( cellAgregator.Cell1 === 'X' && cellAgregator.Cell8 === 'X' && cellAgregator.Cell7 === 0) {
           aiWay = 7;
-        } else if ( this.game.Cell8 === 'X' && this.game.Cell2 === 'X' && this.game.Cell3 === 0) {
+        } else if ( cellAgregator.Cell8 === 'X' && cellAgregator.Cell2 === 'X' && cellAgregator.Cell3 === 0) {
           aiWay = 3;
-        } else if ( this.game.Cell2 === 'X' && this.game.Cell7 === 'X' && this.game.Cell1 === 0) {
+        } else if ( cellAgregator.Cell2 === 'X' && cellAgregator.Cell7 === 'X' && cellAgregator.Cell1 === 0) {
           aiWay = 1;
-        } else if ( this.game.Cell3 === 'X' && this.game.Cell8 === 'X' && this.game.Cell9 === 0) {
+        } else if ( cellAgregator.Cell3 === 'X' && cellAgregator.Cell8 === 'X' && cellAgregator.Cell9 === 0) {
           aiWay = 9;
-        }  else if ( this.game.Cell1 === "X" && this.game.Cell3 === 0 ) {
+        }  else if ( cellAgregator.Cell1 === "X" && cellAgregator.Cell3 === 0 ) {
           aiWay = 3;
-        } else if ( this.game.Cell3 === "X" && this.game.Cell1 === 0 ) {
+        } else if ( cellAgregator.Cell3 === "X" && cellAgregator.Cell1 === 0 ) {
           aiWay = 1;
-        } else if ( this.game.Cell7 === "X" && this.game.Cell9 === 0 ) {
+        } else if ( cellAgregator.Cell7 === "X" && cellAgregator.Cell9 === 0 ) {
           aiWay = 9;
-        } else if ( this.game.Cell9 === "X" && this.game.Cell7 === 0 ) {
+        } else if ( cellAgregator.Cell9 === "X" && cellAgregator.Cell7 === 0 ) {
           aiWay = 7;
         } else {
-          if ( this.game.Cell2 === 0 ) {
+          if ( cellAgregator.Cell2 === 0 ) {
             aiWay = 2;
-          } else if ( this.game.Cell4 === 0 ) {
+          } else if ( cellAgregator.Cell4 === 0 ) {
             aiWay = 4;
-          } else if ( this.game.Cell6 === 0 ) {
+          } else if ( cellAgregator.Cell6 === 0 ) {
             aiWay = 6;
-          } else if ( this.game.Cell8 === 0 ) {
+          } else if ( cellAgregator.Cell8 === 0 ) {
             aiWay = 8;
           } else {
             aiWay = this.easyStrategy.makeWay()();
           } 
         }
-        if ( this.game.Cell1 === "X" && this.game.Cell9 === "X" || this.game.Cell3 === "X" && this.game.Cell7 === "X" ) {
-          if ( this.game.Cell2 === 0 ) {
+        if ( cellAgregator.Cell1 === "X" && cellAgregator.Cell9 === "X" || cellAgregator.Cell3 === "X" && cellAgregator.Cell7 === "X" ) {
+          if ( cellAgregator.Cell2 === 0 ) {
             aiWay = 2;
-          } else if ( this.game.Cell4 === 0 ) {
+          } else if ( cellAgregator.Cell4 === 0 ) {
             aiWay = 4;
-          } else if ( this.game.Cell6 === 0 ) {
+          } else if ( cellAgregator.Cell6 === 0 ) {
             aiWay = 6;
-          } else if ( this.game.Cell8 === 0 ) {
+          } else if ( cellAgregator.Cell8 === 0 ) {
             aiWay = 8;
           }
         }

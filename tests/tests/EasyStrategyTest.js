@@ -8,7 +8,8 @@ QUnit.test( "Easy strategy initialization", function ( assert ) {
 QUnit.test( "Test of making a way with AI_Random method", function ( assert ) {
   var es = new EasyStrategy();
   es.game = new Game();
-  var stub = sinon.stub( es.game, 'isCellMarked' ).callsFake( function () {
+  es.game.cellAgregator = new CellAgregator( es.game );
+  var stub = sinon.stub( es.game.cellAgregator, 'isCellNotMarked' ).callsFake( function () {
     return true;
   } );
   es.cell = class {
@@ -17,7 +18,7 @@ QUnit.test( "Test of making a way with AI_Random method", function ( assert ) {
       this.id = 'cell1';
     }
   }
-  var result = es.game.isCellMarked();
+  var result = es.game.cellAgregator.isCellNotMarked();
 
   assert.ok( result );
   var madedWay = es.makeWay();

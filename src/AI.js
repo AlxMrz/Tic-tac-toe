@@ -28,8 +28,10 @@ class ArtificialIntelligent {
    */
   makeWayByAI() {
     var aiWay = this.compositor.makeWay();
+    console.log(aiWay);
     var cell = document.getElementById( "cell" + aiWay );
-    this.game.changeVal( cell );
+    
+    this.game.cellAgregator.changeVal( cell );
   }
 
 }

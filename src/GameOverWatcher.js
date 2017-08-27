@@ -15,7 +15,6 @@ class GameOverWatcher {
    */
   reloadPageIfGameIsOverAndSetGameOverInTrue() {
     var check = this.checkIfWin();
-    console.log(this.game.getPlayer() + ' ' + check);
     if ( check === true ) {
       this.showMessageAndReloadPage( "Выйграл игрок: " + this.game.getPlayer());
     } else if ( check === 'ничья' ) {
@@ -42,10 +41,6 @@ class GameOverWatcher {
     return 'ничья';
   }
   areThreeCellsInARowCompleted() {
-    console.log(this.is369Equivalent());
-    console.log(this.game.getCell('Cell3'));
-    console.log(this.game.getCell('Cell6'));
-    console.log(this.game.getCell('Cell9'));
     return this.is123Equivalent() ||
             this.is456Equivalent() ||
             this.is789Equivalent() ||
@@ -56,52 +51,52 @@ class GameOverWatcher {
             this.is357Equivalent();
   }
   is123Equivalent() {
-    return ( this.game.getCell( 'Cell1' ) === this.game.getCell( 'Cell2' ) &&
-            this.game.getCell( 'Cell2' ) === this.game.getCell( 'Cell3' ) &&
-            ( this.game.getCell( 'Cell3' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell1' ) === this.game.cellAgregator.getCell( 'Cell2' ) &&
+            this.game.cellAgregator.getCell( 'Cell2' ) === this.game.cellAgregator.getCell( 'Cell3' ) &&
+            ( this.game.cellAgregator.getCell( 'Cell3' ) === this.game.getPlayer() ) );
   }
   is456Equivalent() {
-    return ( this.game.getCell( 'Cell4' ) === this.game.getCell( 'Cell5' )
-            && this.game.getCell( 'Cell5' ) === this.game.getCell( 'Cell6' )
-            && ( this.game.getCell( 'Cell6' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell4' ) === this.game.cellAgregator.getCell( 'Cell5' )
+            && this.game.cellAgregator.getCell( 'Cell5' ) === this.game.cellAgregator.getCell( 'Cell6' )
+            && ( this.game.cellAgregator.getCell( 'Cell6' ) === this.game.getPlayer() ) );
   }
   is789Equivalent() {
-    return ( this.game.getCell( 'Cell7' ) === this.game.getCell( 'Cell8' )
-            && this.game.getCell( 'Cell8' ) === this.game.getCell( 'Cell9' )
-            && ( this.game.getCell( 'Cell9' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell7' ) === this.game.cellAgregator.getCell( 'Cell8' )
+            && this.game.cellAgregator.getCell( 'Cell8' ) === this.game.cellAgregator.getCell( 'Cell9' )
+            && ( this.game.cellAgregator.getCell( 'Cell9' ) === this.game.getPlayer() ) );
   }
 
   is147Equivalent() {
-    return ( this.game.getCell( 'Cell1' ) === this.game.getCell( 'Cell4' )
-            && this.game.getCell( 'Cell4' ) === this.game.getCell( 'Cell7' )
-            && ( this.game.getCell( 'Cell7' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell1' ) === this.game.cellAgregator.getCell( 'Cell4' )
+            && this.game.cellAgregator.getCell( 'Cell4' ) === this.game.cellAgregator.getCell( 'Cell7' )
+            && ( this.game.cellAgregator.getCell( 'Cell7' ) === this.game.getPlayer() ) );
   }
   is258Equivalent() {
-    return ( this.game.getCell( 'Cell2' ) === this.game.getCell( 'Cell5' )
-            && this.game.getCell( 'Cell5' ) === this.game.getCell( 'Cell8' )
-            && ( this.game.getCell( 'Cell8' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell2' ) === this.game.cellAgregator.getCell( 'Cell5' )
+            && this.game.cellAgregator.getCell( 'Cell5' ) === this.game.cellAgregator.getCell( 'Cell8' )
+            && ( this.game.cellAgregator.getCell( 'Cell8' ) === this.game.getPlayer() ) );
   }
   is369Equivalent() {
-    return ( this.game.getCell( 'Cell3' ) === this.game.getCell( 'Cell6' )
-            && this.game.getCell( 'Cell6' ) === this.game.getCell( 'Cell9' )
-            && ( this.game.getCell( 'Cell9' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell3' ) === this.game.cellAgregator.getCell( 'Cell6' )
+            && this.game.cellAgregator.getCell( 'Cell6' ) === this.game.cellAgregator.getCell( 'Cell9' )
+            && ( this.game.cellAgregator.getCell( 'Cell9' ) === this.game.getPlayer() ) );
   }
 
   is159Equivalent() {
-    return ( this.game.getCell( 'Cell1' ) === this.game.getCell( 'Cell5' )
-            && this.game.getCell( 'Cell5' ) === this.game.getCell( 'Cell9' )
-            && ( this.game.getCell( 'Cell9' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell1' ) === this.game.cellAgregator.getCell( 'Cell5' )
+            && this.game.cellAgregator.getCell( 'Cell5' ) === this.game.cellAgregator.getCell( 'Cell9' )
+            && ( this.game.cellAgregator.getCell( 'Cell9' ) === this.game.getPlayer() ) );
   }
   is357Equivalent() {
-    return ( this.game.getCell( 'Cell3' ) === this.game.getCell( 'Cell5' )
-            && this.game.getCell( 'Cell5' ) === this.game.getCell( 'Cell7' )
-            && ( this.game.getCell( 'Cell7' ) === this.game.getPlayer() ) );
+    return ( this.game.cellAgregator.getCell( 'Cell3' ) === this.game.cellAgregator.getCell( 'Cell5' )
+            && this.game.cellAgregator.getCell( 'Cell5' ) === this.game.cellAgregator.getCell( 'Cell7' )
+            && ( this.game.cellAgregator.getCell( 'Cell7' ) === this.game.getPlayer() ) );
   }
 
   areThereAnyFreeCells() {
-    return ( this.game.getCell( 'Cell1' ) == 0 || this.game.getCell( 'Cell2' ) == 0 || this.game.getCell( 'Cell3' ) == 0 ||
-            this.game.getCell( 'Cell4' ) == 0 || this.game.getCell( 'Cell5' ) == 0 || this.game.getCell( 'Cell6' ) == 0 ||
-            this.game.getCell( 'Cell7' ) == 0 || this.game.getCell( 'Cell8' ) == 0 || this.game.getCell( 'Cell9' ) == 0 );
+    return ( this.game.cellAgregator.getCell( 'Cell1' ) == 0 || this.game.cellAgregator.getCell( 'Cell2' ) == 0 || this.game.cellAgregator.getCell( 'Cell3' ) == 0 ||
+            this.game.cellAgregator.getCell( 'Cell4' ) == 0 || this.game.cellAgregator.getCell( 'Cell5' ) == 0 || this.game.cellAgregator.getCell( 'Cell6' ) == 0 ||
+            this.game.cellAgregator.getCell( 'Cell7' ) == 0 || this.game.cellAgregator.getCell( 'Cell8' ) == 0 || this.game.cellAgregator.getCell( 'Cell9' ) == 0 );
   }
 }
 

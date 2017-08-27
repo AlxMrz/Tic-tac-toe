@@ -3,6 +3,7 @@ class App {
   constructor() {
     this.game = new Game();
     this.game.setAI( new ArtificialIntelligent( this.game ) );
+    this.game.cellAgregator = new CellAgregator( this.game );
     this.cells = document.getElementsByClassName( 'cell' );
   }
   /**
